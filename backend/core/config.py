@@ -1,6 +1,7 @@
 from typing import Dict, List
 
 from dotenv import load_dotenv
+from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 load_dotenv()
@@ -8,8 +9,14 @@ load_dotenv()
 
 class Settings(BaseSettings):
     HUGGINGFACE_API_KEY: str = ""
-    SUPABASE_URL: str = ""
-    SUPABASE_ANON_KEY: str = ""
+    SUPABASE_URL: str = Field(
+        "",
+        validation_alias=AliasChoices("SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_URL"),
+    )
+    SUPABASE_ANON_KEY: str = Field(
+        "",
+        validation_alias=AliasChoices("SUPABASE_ANON_KEY", "NEXT_PUBLIC_SUPABASE_ANON_KEY"),
+    )
     SUPABASE_JWT_SECRET: str = ""
 
     model_config = SettingsConfigDict(
