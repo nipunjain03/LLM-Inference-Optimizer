@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useChat } from "@/context/ChatContext";
 import { AuthModal } from "./AuthModal";
@@ -17,13 +18,16 @@ export function Navbar() {
   return (
     <nav className="h-16 w-full bg-card retro-bevel flex items-center justify-between px-6 shrink-0 z-50">
       {/* Left: Logo + Branding */}
-      <div className="flex items-center gap-3 group px-2 py-1 cursor-pointer transition-all">
-        <img 
+      <div className="flex items-center gap-2 group px-2 py-1 cursor-pointer transition-all">
+        <Image 
           src="/logo.png" 
           alt="Optimus Logo" 
-          className="h-8 md:h-[36px] w-auto object-contain transition-all brightness-0 group-hover:opacity-70" 
+          width={32}
+          height={32}
+          className="transition-all group-hover:opacity-70" 
+          priority
         />
-        <span className="text-foreground font-bold text-xl tracking-tight transition-colors group-hover:text-primary !font-sans">
+        <span className="text-foreground font-semibold text-lg tracking-tight transition-colors group-hover:text-primary !font-sans">
           Optimus
         </span>
       </div>

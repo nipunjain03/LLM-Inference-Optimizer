@@ -139,3 +139,373 @@
     -webkit-font-smoothing: none;
   }
 }
+
+/* ==================== THEME SYSTEM ==================== */
+
+/* XP THEME (Default) */
+html.xp {
+  --background: #008080;
+  --foreground: #000000;
+  --card: #c0c0c0;
+  --card-foreground: #000000;
+  --popover: #c0c0c0;
+  --popover-foreground: #000000;
+  --primary: #000080;
+  --primary-foreground: #ffffff;
+  --secondary: #dfdfdf;
+  --secondary-foreground: #000000;
+  --muted: #dfdfdf;
+  --muted-foreground: #808080;
+  --accent: #000080;
+  --accent-foreground: #ffffff;
+  --destructive: #ff0000;
+  --border: #808080;
+  --input: #ffffff;
+  --ring: #000000;
+  --radius: 0px;
+  scrollbar-gutter: stable;
+}
+
+html.xp {
+  font-family: "MS Sans Serif", "Microsoft Sans Serif", sans-serif;
+  -webkit-font-smoothing: none;
+}
+
+html.xp body {
+  background: linear-gradient(135deg, #008080 0%, #0f7070 100%);
+  color: #000000;
+}
+
+/* ==================== MODERN THEME (CLEAN REBUILD) ==================== */
+
+/* Modern Theme Variables */
+html.modern {
+  --background: #030812;
+  --foreground: #ffffff;
+  --card: #0a1428;
+  --card-foreground: #ffffff;
+  --popover: #0a1428;
+  --popover-foreground: #ffffff;
+  --primary: #06b6d4;
+  --primary-foreground: #ffffff;
+  --secondary: #0ea5e9;
+  --secondary-foreground: #ffffff;
+  --muted: #64748b;
+  --muted-foreground: #cbd5e1;
+  --accent: #10b981;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: #1e3a5f;
+  --input: #0a1428;
+  --ring: #06b6d4;
+  --radius: 12px;
+  scrollbar-gutter: stable;
+}
+
+/* Modern Typography */
+html.modern {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+html.modern body {
+  background: linear-gradient(135deg, #030812 0%, #0f2540 50%, #1a1a3e 100%);
+  color: #ffffff;
+  background-attachment: fixed;
+}
+
+/* Smooth theme transition for html/body only */
+html,
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* CRITICAL: Prevent ALL transitions on fixed modal elements */
+[style*="position: fixed"],
+[style*="position: absolute"] {
+  transition: none !important;
+}
+
+[style*="position: fixed"] *,
+[style*="position: fixed"] *::before,
+[style*="position: fixed"] *::after {
+  transition: none !important;
+}
+
+/* ==================== MODERN THEME INPUTS ==================== */
+
+html.modern input,
+html.modern textarea,
+html.modern select {
+  background: #0a1428 !important;
+  border: 1.5px solid rgba(6, 182, 212, 0.2) !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  padding: 10px 12px !important;
+  font-size: 14px !important;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+html.modern input::placeholder,
+html.modern textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+html.modern input:hover,
+html.modern textarea:hover,
+html.modern select:hover {
+  border-color: rgba(6, 182, 212, 0.4) !important;
+  background: #0a1a32 !important;
+}
+
+html.modern input:focus,
+html.modern textarea:focus,
+html.modern select:focus {
+  border-color: rgba(6, 182, 212, 0.8) !important;
+  background: #0a1a32 !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+}
+
+/* ==================== MODERN THEME BUTTONS ==================== */
+
+html.modern button {
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+
+html.modern .btn-primary {
+  background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+html.modern .btn-primary:hover {
+  background: linear-gradient(135deg, #22d3ee 0%, #38bdf8 100%);
+  box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
+}
+
+/* ==================== MODERN THEME CARDS ==================== */
+
+html.modern [class*="card"],
+html.modern .card {
+  background: rgba(10, 20, 40, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(6, 182, 212, 0.1);
+  border-radius: 12px;
+  color: #ffffff;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+html.modern [class*="card"]:hover,
+html.modern .card:hover {
+  background: rgba(10, 20, 40, 0.7);
+  border-color: rgba(6, 182, 212, 0.2);
+  box-shadow: 0 8px 24px rgba(6, 182, 212, 0.1);
+}
+
+/* ==================== MODERN THEME NAVIGATION ==================== */
+
+html.modern nav,
+html.modern header,
+html.modern [class*="navbar"] {
+  background: rgba(3, 8, 18, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+html.modern nav a,
+html.modern header a,
+html.modern [class*="navbar"] a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+html.modern nav a:hover,
+html.modern header a:hover,
+html.modern [class*="navbar"] a:hover {
+  color: #06b6d4;
+}
+
+/* Logo */
+html.modern img[alt*="Logo"],
+html.modern [class*="logo"] img {
+  filter: brightness(2) invert(1);
+}
+
+html.xp img[alt*="Logo"],
+html.xp [class*="logo"] img {
+  filter: brightness(0);
+}
+
+/* ==================== MODERN THEME TEXT ==================== */
+
+html.modern h1,
+html.modern h2,
+html.modern h3,
+html.modern h4,
+html.modern h5,
+html.modern h6,
+html.modern p,
+html.modern span,
+html.modern label,
+html.modern li,
+html.modern td,
+html.modern th {
+  color: #ffffff;
+}
+
+html.modern .text-muted {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+html.modern .text-muted-foreground {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Links */
+html.modern a {
+  color: #06b6d4;
+}
+
+html.modern a:hover {
+  color: #22d3ee;
+}
+
+/* ==================== XP THEME COMPONENTS ==================== */
+
+html.xp input,
+html.xp textarea,
+html.xp select {
+  background: #ffffff !important;
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf !important;
+  color: #000000 !important;
+  padding: 3px 4px;
+}
+
+html.xp input:focus,
+html.xp textarea:focus,
+html.xp select:focus {
+  outline: 1px dotted #000000;
+  outline-offset: -4px;
+}
+
+html.xp button {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf;
+  color: #000000;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+
+html.xp button:active {
+  border-color: #808080 #dfdfdf #dfdfdf #808080;
+}
+
+html.xp button:disabled {
+  color: #808080;
+}
+
+/* ==================== UTILITY CLASSES ==================== */
+
+.theme-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-effect {
+  background: rgba(10, 20, 40, 0.4);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1.5px solid rgba(6, 182, 212, 0.15);
+  color: #ffffff;
+}
+
+.glass-effect-strong {
+  background: rgba(5, 10, 25, 0.6);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1.5px solid rgba(6, 182, 212, 0.2);
+  color: #ffffff;
+}
+
+.glass-effect-light {
+  background: rgba(15, 26, 46, 0.35);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(6, 182, 212, 0.1);
+  color: #ffffff;
+}
+
+/* Gradient overlays */
+.gradient-overlay {
+  background: linear-gradient(135deg, 
+              rgba(6, 182, 212, 0.1) 0%, 
+              rgba(16, 185, 129, 0.05) 100%);
+}
+
+.gradient-border {
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9, #10b981);
+  background-clip: padding-box;
+}
+
+/* Animations */
+@keyframes fadeInGlass {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(16px);
+  }
+}
+
+@keyframes slideInGlass {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    backdrop-filter: blur(16px);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.5);
+  }
+}
+
+.animate-fadeInGlass {
+  animation: fadeInGlass 0.5s ease-out;
+}
+
+.animate-slideInGlass {
+  animation: slideInGlass 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-glowPulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
