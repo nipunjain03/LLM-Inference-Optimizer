@@ -31,7 +31,9 @@ export function ThemeSwitcher({ onClose }: ThemeSwitcherProps) {
         className="fixed inset-0 bg-black/50 z-40"
         onClick={onClose}
         style={{
-          pointerEvents: "auto"
+          pointerEvents: "auto",
+          backdropFilter: "blur(4px)",
+          WebkitBackdropFilter: "blur(4px)"
         }}
       />
 
@@ -43,14 +45,16 @@ export function ThemeSwitcher({ onClose }: ThemeSwitcherProps) {
           left: "50%",
           transform: "translate(-50%, -50%) translateZ(0) perspective(1000px)",
           zIndex: 50,
-          width: "384px",
+          width: "420px",
           minHeight: "300px",
           maxHeight: "90vh",
-          backgroundColor: "#18181b",
-          border: "1px solid #27272a",
-          borderRadius: "8px",
-          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-          padding: "24px",
+          backgroundColor: "rgba(15, 23, 42, 0.7)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          border: "1px solid rgba(255, 255, 255, 0.1)",
+          borderRadius: "20px",
+          boxShadow: "0 16px 64px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+          padding: "28px",
           boxSizing: "border-box",
           willChange: "transform",
           backfaceVisibility: "hidden",
@@ -64,13 +68,14 @@ export function ThemeSwitcher({ onClose }: ThemeSwitcherProps) {
         onClick={(e) => e.stopPropagation()}
       >
         <h2 style={{
-          fontSize: "18px",
-          fontWeight: "600",
-          color: "#f4f4f5",
-          marginBottom: "16px",
-          margin: "0 0 16px 0",
+          fontSize: "20px",
+          fontWeight: "700",
+          color: "#e2e8f0",
+          marginBottom: "20px",
+          margin: "0 0 24px 0",
           padding: "0",
-          transition: "none"
+          transition: "none",
+          letterSpacing: "0.5px"
         }}>
           Choose Theme
         </h2>
@@ -96,20 +101,23 @@ export function ThemeSwitcher({ onClose }: ThemeSwitcherProps) {
                 onMouseLeave={() => setHoveredTheme(null)}
                 style={{
                   width: "100%",
-                  padding: "12px 16px",
-                  borderRadius: "8px",
+                  padding: "14px 18px",
+                  borderRadius: "12px",
                   textAlign: "left",
                   border: "1px solid",
                   cursor: "pointer",
-                  backgroundColor: isSelected ? "#4f46e5" : isHovered ? "#27272a" : "#18181b",
-                  color: isSelected ? "#ffffff" : "#e4e4e7",
-                  borderColor: isSelected ? "#4338ca" : isHovered ? "#3f3f46" : "#27272a",
+                  backgroundColor: isSelected ? "linear-gradient(135deg, #3b82f6, #2563eb)" : isHovered ? "rgba(255, 255, 255, 0.08)" : "rgba(255, 255, 255, 0.05)",
+                  color: isSelected ? "#ffffff" : "#e2e8f0",
+                  borderColor: isSelected ? "rgba(59, 130, 246, 0.5)" : isHovered ? "rgba(59, 130, 246, 0.3)" : "rgba(255, 255, 255, 0.08)",
                   transition: "none",
                   margin: 0,
                   font: "inherit",
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "space-between"
+                  justifyContent: "space-between",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
+                  boxShadow: isSelected ? "0 8px 24px rgba(59, 130, 246, 0.2)" : "0 4px 12px rgba(0, 0, 0, 0.1)"
                 }}
               >
                 <div style={{
@@ -119,21 +127,24 @@ export function ThemeSwitcher({ onClose }: ThemeSwitcherProps) {
                   transition: "none"
                 }}>
                   <p style={{
-                    fontWeight: "500",
+                    fontWeight: "600",
                     margin: 0,
                     padding: 0,
-                    lineHeight: "1.2",
-                    transition: "none"
+                    lineHeight: "1.3",
+                    transition: "none",
+                    color: "#e2e8f0",
+                    fontSize: "15px"
                   }}>
                     {t.label}
                   </p>
                   <p style={{
-                    fontSize: "14px",
-                    opacity: 0.75,
+                    fontSize: "15px",
+                    opacity: 0.7,
                     margin: 0,
                     padding: 0,
-                    lineHeight: "1.2",
-                    transition: "none"
+                    lineHeight: "1.3",
+                    transition: "none",
+                    color: "#cbd5e1"
                   }}>
                     {t.description}
                   </p>
@@ -158,18 +169,21 @@ export function ThemeSwitcher({ onClose }: ThemeSwitcherProps) {
           onClick={onClose}
           style={{
             width: "100%",
-            marginTop: "16px",
-            padding: "8px 16px",
-            borderRadius: "8px",
-            backgroundColor: "#18181b",
-            color: "#e4e4e7",
-            border: "1px solid #27272a",
+            marginTop: "20px",
+            padding: "10px 18px",
+            borderRadius: "10px",
+            backgroundColor: "rgba(255, 255, 255, 0.05)",
+            color: "#e2e8f0",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
             fontSize: "14px",
             fontWeight: "500",
             cursor: "pointer",
             transition: "none",
-            margin: 0,
-            font: "inherit"
+            margin: "20px 0 0 0",
+            font: "inherit",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)"
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.backgroundColor = "#27272a";
