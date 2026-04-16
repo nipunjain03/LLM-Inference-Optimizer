@@ -4,7 +4,7 @@ from typing import Any, AsyncGenerator
 
 import httpx
 
-from core.config import settings
+from backend.core.config import settings
 
 logger = logging.getLogger(__name__)
 

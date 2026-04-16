@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import chat, models
+from backend.routes import chat, models
 
 app = FastAPI(
     title="Optimus Backend",

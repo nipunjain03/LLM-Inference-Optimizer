@@ -15,12 +15,7 @@ export function ThemeSwitcher({ onClose }: ThemeSwitcherProps) {
     {
       id: "xp",
       label: "XP Theme",
-      description: "Classic UI style",
-    },
-    {
-      id: "modern",
-      label: "Modern Theme",
-      description: "Glassmorphism design",
+      description: "Classic Windows XP UI",
     },
   ];
 

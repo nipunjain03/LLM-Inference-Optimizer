@@ -5,9 +5,9 @@ from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
-from core.config import DEFAULT_MODEL, is_valid_model
-from services.auth import get_current_user
-from services.huggingface import (
+from backend.core.config import DEFAULT_MODEL, is_valid_model
+from backend.services.auth import get_current_user
+from backend.services.huggingface import (
     HuggingFaceAPIError,
     send_huggingface_request,
     stream_huggingface_request,

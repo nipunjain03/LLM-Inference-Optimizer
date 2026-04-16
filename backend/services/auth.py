@@ -11,7 +11,7 @@ from cryptography.hazmat.primitives.asymmetric.utils import decode_dss_signature
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
-from core.config import settings
+from backend.core.config import settings
 
 bearer_scheme = HTTPBearer(auto_error=False)
 

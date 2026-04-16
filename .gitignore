@@ -45,4 +45,5 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
+backend_env/
 backend/venv/

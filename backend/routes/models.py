@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 
-from core.config import ALLOWED_MODELS
-from services.auth import get_current_user
+from backend.core.config import ALLOWED_MODELS
+from backend.services.auth import get_current_user
 
 router = APIRouter()
 

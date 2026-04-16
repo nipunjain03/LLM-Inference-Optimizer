@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-screen antialiased xp`}
+      className={`${geistSans.variable} ${geistMono.variable} h-screen antialiased`}
     >
       <head>
         <script
@@ -41,8 +41,13 @@ export default function RootLayout({
               (function() {
                 try {
                   const savedTheme = localStorage.getItem('theme') || 'xp';
-                  document.documentElement.classList.remove('xp', 'modern');
-                  document.documentElement.classList.add(savedTheme);
+                  
+                  // Create and load the theme CSS
+                  const link = document.createElement('link');
+                  link.id = 'theme-css';
+                  link.rel = 'stylesheet';
+                  link.href = '/styles/' + savedTheme + '.css';
+                  document.head.appendChild(link);
                 } catch (e) {
                   console.error('Theme initialization error:', e);
                 }

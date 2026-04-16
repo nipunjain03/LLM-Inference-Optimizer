@@ -1,0 +1,239 @@
+/* ==================== XP THEME CSS ==================== */
+/* Windows 95/98 Retro Style - Completely Independent */
+
+/* XP Theme Root Variables */
+:root {
+  --background: #008080;
+  --foreground: #000000;
+  --card: #c0c0c0;
+  --card-foreground: #000000;
+  --popover: #c0c0c0;
+  --popover-foreground: #000000;
+  --primary: #000080;
+  --primary-foreground: #ffffff;
+  --secondary: #dfdfdf;
+  --secondary-foreground: #000000;
+  --muted: #dfdfdf;
+  --muted-foreground: #808080;
+  --accent: #000080;
+  --accent-foreground: #ffffff;
+  --destructive: #ff0000;
+  --border: #808080;
+  --input: #ffffff;
+  --ring: #000000;
+  --radius: 0px;
+  --sidebar: #c0c0c0;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #000080;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #000080;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #808080;
+  --sidebar-ring: #000000;
+  scrollbar-gutter: stable;
+}
+
+/* XP Typography */
+html, body, button, input, select, textarea {
+  font-family: "MS Sans Serif", "Microsoft Sans Serif", sans-serif !important;
+  -webkit-font-smoothing: none;
+}
+
+/* XP Body Styling */
+body {
+  background: linear-gradient(135deg, #008080 0%, #0f7070 100%);
+  color: #000000;
+}
+
+/* ==================== XP INPUTS ==================== */
+input,
+textarea,
+select {
+  background: #ffffff !important;
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf !important;
+  color: #000000 !important;
+  padding: 3px 4px;
+  font-family: "MS Sans Serif", "Microsoft Sans Serif", sans-serif;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #808080 !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 1px dotted #000000;
+  outline-offset: -4px;
+}
+
+/* ==================== XP BUTTONS ==================== */
+button {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf;
+  color: #000000;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  font-family: "MS Sans Serif", "Microsoft Sans Serif", sans-serif;
+  transition: none;
+}
+
+button:hover {
+  background: #dfdfdf;
+}
+
+button:active {
+  border-color: #808080 #dfdfdf #dfdfdf #808080;
+  box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
+}
+
+button:disabled {
+  color: #808080;
+  text-shadow: 1px 1px 0 #dfdfdf;
+}
+
+/* ==================== XP TEXT ==================== */
+h1, h2, h3, h4, h5, h6,
+p, span, label, li, td, th {
+  color: #000000;
+}
+
+/* ==================== XP CARDS ==================== */
+[class*="card"],
+.card {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf;
+  color: #000000;
+  padding: 4px;
+}
+
+/* ==================== XP NAVIGATION ==================== */
+nav,
+header,
+[class*="navbar"] {
+  background: #c0c0c0;
+  border-bottom: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf;
+  padding: 2px;
+}
+
+nav a,
+header a,
+[class*="navbar"] a {
+  color: #000000;
+  text-decoration: none;
+  transition: none;
+}
+
+nav a:hover,
+header a:hover,
+[class*="navbar"] a:hover {
+  background: #000080;
+  color: #ffffff;
+}
+
+/* ==================== XP SIDEBAR ==================== */
+aside,
+[class*="sidebar"] {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf;
+  color: #000000;
+  padding: 2px;
+  margin: 0;
+}
+
+/* ==================== XP UTILITIES ==================== */
+
+/* Retro Bevel Effect */
+.retro-bevel {
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf !important;
+}
+
+.retro-bevel-inset {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey !important;
+}
+
+/* Logo in XP */
+img[alt*="Logo"],
+[class*="logo"] img {
+  filter: brightness(0);
+}
+
+/* Remove any modern features */
+hr,
+[class*="separator"],
+[class*="divider"] {
+  border: 1px solid #808080;
+  background: transparent;
+  height: 1px;
+  margin: 2px 0;
+}
+
+/* Badges */
+[class*="badge"] {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf;
+  color: #000000;
+  border-radius: 0;
+  padding: 2px 6px;
+  font-weight: bold;
+  font-size: 11px;
+  transition: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #dfdfdf, #c0c0c0, #808080);
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf;
+}
+
+::-webkit-scrollbar-corner {
+  background: #c0c0c0;
+}
+
+/* No transitions in XP theme */
+* {
+  transition: none !important;
+}
+
+/* Critical for modals */
+[style*="position: fixed"],
+[style*="position: absolute"] {
+  transition: none !important;
+}
+
+[style*="position: fixed"] *,
+[style*="position: fixed"] *::before,
+[style*="position: fixed"] *::after {
+  transition: none !important;
+}
+
+/* Utility text colors */
+.text-muted {
+  color: #808080;
+}
+
+.text-muted-foreground {
+  color: #808080;
+}

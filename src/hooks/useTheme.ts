@@ -1,35 +1,39 @@
 import { useEffect, useState } from "react";
 
-export type Theme = "xp" | "modern";
+export type Theme = "xp";
+
+/**
+ * Dynamically load a theme CSS file
+ * Removes existing theme CSS and loads the new one
+ */
+function loadThemeCss(theme: Theme) {
+  // Remove existing theme CSS link if it exists
+  const existingLink = document.getElementById("theme-css");
+  if (existingLink) {
+    existingLink.remove();
+  }
+
+  // Create and append new theme CSS link
+  const link = document.createElement("link");
+  link.id = "theme-css";
+  link.rel = "stylesheet";
+  link.href = `/styles/${theme}.css`;
+  document.head.appendChild(link);
+}
 
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>("xp");
+  const [theme] = useState<Theme>("xp");
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load theme from localStorage on mount
+  // Load theme from localStorage and apply CSS on mount
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as Theme | null;
-    const initialTheme = savedTheme || "xp";
-    
-    // Apply theme to DOM immediately
-    document.documentElement.classList.remove("xp", "modern");
-    document.documentElement.classList.add(initialTheme);
-    
-    // Update state once
-    setTheme(initialTheme);
+    // Load the XP theme by default
+    loadThemeCss("xp");
     setIsLoaded(true);
   }, []);
 
-  const toggleTheme = (newTheme: Theme) => {
-    // Update DOM first
-    document.documentElement.classList.remove("xp", "modern");
-    document.documentElement.classList.add(newTheme);
-    
-    // Update state
-    setTheme(newTheme);
-    
-    // Persist to localStorage
-    localStorage.setItem("theme", newTheme);
+  const toggleTheme = () => {
+    // Keep XP theme - no switching needed
   };
 
   return {
