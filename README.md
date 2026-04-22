@@ -1,36 +1,172 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LLM Inference Optimizer
 
-## Getting Started
+Optimus is a full-stack inference playground for comparing open-weight LLMs and tuning generation parameters.
 
-First, run the development server:
+It includes:
+
+- A Next.js frontend for chat, model comparison, and optimization controls
+- A FastAPI backend that proxies requests to Hugging Face Router
+- Supabase authentication with JWT validation in the backend
+
+## Tech Stack
+
+### Frontend
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- shadcn/ui components
+- Supabase JS client
+
+### Backend
+
+- FastAPI
+- Uvicorn
+- httpx
+- PyJWT + cryptography
+- pydantic-settings
+
+## Project Structure
+
+```text
+src/
+	app/
+		page.tsx            # Main chat page
+		compare/page.tsx    # Model comparison UI
+		optimize/page.tsx   # Inference settings UI
+	components/
+	context/
+	lib/
+backend/
+	main.py               # FastAPI app entrypoint
+	routes/               # /chat and /models routes
+	services/             # Hugging Face + auth services
+	core/config.py        # Env config + allowed model whitelist
+```
+
+## Prerequisites
+
+- Node.js 20+
+- Python 3.10+
+- A Supabase project
+- A Hugging Face API key with Router access
+
+## Environment Variables
+
+The app relies on both frontend and backend environment variables.
+
+### Frontend (`.env.local` at repo root)
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+### Backend (`.env` at repo root)
+
+```env
+HUGGINGFACE_API_KEY=your_huggingface_api_key
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_JWT_SECRET=optional_legacy_secret
+```
+
+Notes:
+
+- Backend validation currently uses Supabase JWKS, not `SUPABASE_JWT_SECRET`.
+- `SUPABASE_URL` and `SUPABASE_ANON_KEY` can also be sourced from `NEXT_PUBLIC_*` aliases.
+
+## Local Development
+
+Install frontend dependencies:
+
+```bash
+npm install
+```
+
+Install backend dependencies:
+
+```bash
+python -m pip install -r backend/requirements.txt
+```
+
+Start backend from the repository root:
+
+```bash
+uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+Start frontend:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Frontend: http://localhost:3000
+- Backend docs: http://localhost:8000/docs
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel
+## Current Features
 
-## Learn More
+- Email/password auth via Supabase
+- Chat interface with selectable model
+- Curated model categories: Fast, Balanced, Powerful
+- Inference controls UI for:
+	- Temperature
+	- Max tokens
+	- Top-p
+	- Top-k
+	- Streaming toggle (UI only at the moment)
+- Backend model whitelist enforcement
+- Protected API routes requiring Bearer token
 
-To learn more about Next.js, take a look at the following resources:
+## API Endpoints
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All endpoints require `Authorization: Bearer <supabase_access_token>`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### `POST /chat`
 
-## Deploy on Vercel
+Request body:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js
+```json
+{
+	"message": "Explain KV cache in one paragraph",
+	"model": "meta-llama/Meta-Llama-3-8B-Instruct",
+	"settings": {
+		"temperature": 0.7,
+		"max_tokens": 512,
+		"top_p": 0.9,
+		"top_k": 50,
+		"stream": false
+	}
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### `GET /models`
+
+Returns allowed/whitelisted models grouped by category.
+
+## Important Implementation Notes
+
+- Frontend chat requests are currently hardcoded to `http://localhost:8000/chat`.
+- Backend supports SSE streaming, but frontend currently sends `stream: false` in chat requests.
+- CORS is permissive for development (`allow_origins=["*"]`). Tighten this in production.
+
+## Deployment Notes
+
+- Frontend is configured for Vercel (`vercel.json` present).
+- Backend should be deployed separately (for example, containerized FastAPI service).
+- Update frontend API base URL strategy before production deployment.
+
+## Troubleshooting
+
+- `401 Missing token`:
+	- Make sure you are logged in through Supabase on the frontend.
+- `401 Invalid token`:
+	- Verify `SUPABASE_URL` points to the same Supabase project used by the frontend.
+- `500 HUGGINGFACE_API_KEY is not set`:
+	- Set `HUGGINGFACE_API_KEY` in backend env.
+- `Model not supported`:
+	- Pick one of the whitelisted model IDs from `/models`.
