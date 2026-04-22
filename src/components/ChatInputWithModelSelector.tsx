@@ -114,28 +114,28 @@ export function ChatInputWithModelSelector() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto w-full relative">
-      <div className="relative bg-card retro-bevel flex flex-col p-2 space-y-2">
+    <div className="max-w-4xl mx-auto w-full relative animate-rise">
+      <div className="glass-card edge-highlight relative rounded-3xl flex flex-col p-3 md:p-4 space-y-3">
         <Textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Message Optimus..."
-          className="w-full min-h-[52px] max-h-72 resize-none bg-input retro-bevel-inset border-none px-2 py-3 text-foreground text-sm font-bold shadow-none rounded-none"
+          className="w-full min-h-[56px] max-h-72 resize-none rounded-2xl border border-white/12 bg-black/20 px-4 py-3 text-foreground text-sm shadow-none"
           rows={2}
         />
 
-        <div className="flex items-center justify-between px-1">
+        <div className="flex items-center justify-between gap-3 px-1">
           <DropdownMenu>
-            <DropdownMenuTrigger className="inline-flex items-center justify-center whitespace-nowrap h-8 gap-2 bg-card text-foreground font-bold text-xs transition-colors focus:outline-none retro-bevel px-2 py-1 active:retro-bevel-inset">
+            <DropdownMenuTrigger className="inline-flex items-center justify-center whitespace-nowrap h-9 gap-2 rounded-xl bg-black/25 border border-white/12 text-foreground text-xs font-semibold transition-colors focus:outline-none px-3">
               {activeModel.icon}
               <span>{activeModel.name}</span>
-              <ChevronDown size={14} className="text-foreground ml-1" />
+              <ChevronDown size={14} className="text-muted-foreground ml-1" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-[240px] bg-card retro-bevel rounded-none text-foreground p-1 shadow-none border-none max-h-[350px] overflow-y-auto">
+            <DropdownMenuContent align="start" className="w-[270px] bg-[#07162d] border border-white/12 rounded-2xl text-foreground p-1 shadow-2xl max-h-[350px] overflow-y-auto soft-scroll">
               {CATEGORIZED_MODELS.map((category, idx) => (
                 <DropdownMenuGroup key={category.title}>
-                  <DropdownMenuLabel className="flex items-center gap-2 px-2 py-1.5 text-xs font-bold bg-primary text-primary-foreground mb-1 mt-1 first:mt-0 uppercase tracking-widest">
+                  <DropdownMenuLabel className="flex items-center gap-2 px-2 py-1.5 text-[11px] font-semibold bg-primary/20 text-primary mb-1 mt-1 first:mt-0 uppercase tracking-[0.16em] rounded-lg">
                     {category.icon}
                     {category.title}
                   </DropdownMenuLabel>
@@ -143,19 +143,19 @@ export function ChatInputWithModelSelector() {
                     <DropdownMenuItem
                       key={model.id}
                       onClick={() => setSelectedModel(toModelOption(model))}
-                      className={`flex items-center gap-2 cursor-pointer py-1 px-1 rounded-none font-bold ${
+                      className={`flex items-center gap-2 cursor-pointer py-1.5 px-1.5 rounded-lg font-medium ${
                         selectedModel.id === model.id
-                          ? "bg-primary text-primary-foreground"
-                          : "hover:bg-primary hover:text-primary-foreground"
+                          ? "bg-primary/80 text-primary-foreground"
+                          : "hover:bg-primary/15"
                       }`}
                     >
-                      <div className="w-5 h-5 flex items-center justify-center bg-input retro-bevel-inset">
+                      <div className="w-5 h-5 flex items-center justify-center rounded bg-black/30 border border-white/10">
                         {model.icon}
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-sm font-bold">{model.name}</span>
+                        <span className="text-sm">{model.name}</span>
                         {model.recommended && (
-                          <span className="text-[9px] text-primary-foreground/80 lowercase">
+                          <span className="text-[9px] text-muted-foreground lowercase">
                             recommended default
                           </span>
                         )}
@@ -175,7 +175,7 @@ export function ChatInputWithModelSelector() {
               <Button
                 onClick={() => setIsTyping(false)}
                 size="icon"
-                className="w-8 h-8 bg-card text-foreground retro-bevel active:retro-bevel-inset shadow-none rounded-none"
+                className="w-9 h-9 rounded-xl bg-accent/80 hover:bg-accent text-accent-foreground border border-accent/60"
               >
                 <StopCircle size={16} />
               </Button>
@@ -183,7 +183,7 @@ export function ChatInputWithModelSelector() {
               <Button
                 onClick={handleSend}
                 size="icon"
-                className={`w-8 h-8 bg-card text-foreground retro-bevel shadow-none rounded-none transition-none ${!input.trim() ? "opacity-50 pointer-events-none" : "hover:bg-card active:retro-bevel-inset"}`}
+                className={`w-9 h-9 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground border border-primary/60 shadow-lg transition-all ${!input.trim() ? "opacity-50 pointer-events-none" : "hover:translate-y-[-1px]"}`}
                 disabled={!input.trim()}
               >
                 <Send size={14} className={input.trim() ? "ml-0.5" : ""} />

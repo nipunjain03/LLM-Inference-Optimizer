@@ -73,37 +73,37 @@ export function AuthModal() {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-      <DialogTrigger className="inline-flex items-center justify-center text-sm font-bold transition-colors bg-card retro-bevel active:retro-bevel-inset text-foreground px-6 py-2">
+      <DialogTrigger className="inline-flex items-center justify-center text-sm font-semibold rounded-full transition-colors bg-primary text-primary-foreground px-5 py-2.5 border border-primary/65 hover:bg-primary/90">
         Sign In
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-card retro-bevel border-none text-foreground rounded-none p-1">
-        <DialogHeader className="bg-primary retro-bevel text-primary-foreground p-1 mb-2">
-          <DialogTitle className="font-bold flex items-center justify-between px-1">
+      <DialogContent className="sm:max-w-[430px] glass-card edge-highlight border-white/15 text-foreground rounded-3xl p-0 overflow-hidden">
+        <DialogHeader className="bg-gradient-to-r from-primary/25 to-accent/20 text-foreground p-5 border-b border-white/10">
+          <DialogTitle className="font-semibold text-xl">
             {isSignUp ? "Create an account" : "Welcome back"}
           </DialogTitle>
-          <DialogDescription className="text-primary-foreground/80 px-1">
+          <DialogDescription className="text-muted-foreground pt-1">
             {isSignUp
               ? "Create your account with Supabase authentication."
               : "Sign in with your Supabase account to continue."}
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-4 px-3 pb-3">
+        <form onSubmit={handleSubmit} className="space-y-4 p-5">
           <div className="space-y-4">
             {isSignUp && (
               <div className="space-y-2">
-                <Label htmlFor="name" className="font-bold text-foreground">Name</Label>
+                <Label htmlFor="name" className="font-medium text-foreground">Name</Label>
                 <Input
                   id="name"
                   type="text"
                   placeholder="John Doe"
                   value={name}
                   onChange={(event) => setName(event.target.value)}
-                  className="bg-input border-none retro-bevel-inset text-foreground rounded-none px-2"
+                  className="bg-black/20 border-white/12 text-foreground rounded-xl px-3"
                 />
               </div>
             )}
             <div className="space-y-2">
-              <Label htmlFor="email" className="font-bold text-foreground">Email</Label>
+              <Label htmlFor="email" className="font-medium text-foreground">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -111,30 +111,30 @@ export function AuthModal() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 required
-                className="bg-input border-none retro-bevel-inset text-foreground rounded-none px-2"
+                className="bg-black/20 border-white/12 text-foreground rounded-xl px-3"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="font-bold text-foreground">Password</Label>
+              <Label htmlFor="password" className="font-medium text-foreground">Password</Label>
               <Input
                 id="password"
                 type="password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 required
-                className="bg-input border-none retro-bevel-inset text-foreground rounded-none px-2"
+                className="bg-black/20 border-white/12 text-foreground rounded-xl px-3"
               />
             </div>
           </div>
           {feedback && (
-            <p className={`text-sm font-bold ${feedback.tone === "error" ? "text-red-500" : "text-green-600"}`}>
+            <p className={`text-sm ${feedback.tone === "error" ? "text-red-400" : "text-emerald-400"}`}>
               {feedback.text}
             </p>
           )}
           <Button
             type="submit"
             disabled={isSubmitting || isAuthLoading}
-            className="w-full bg-card retro-bevel hover:retro-bevel-inset active:retro-bevel-inset text-foreground font-bold shadow-none rounded-none border-none"
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl border border-primary/65"
           >
             {isSubmitting
               ? "Working..."
@@ -146,7 +146,7 @@ export function AuthModal() {
             <button
               type="button"
               onClick={handleModeToggle}
-              className="text-sm text-foreground hover:underline font-bold"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               {isSignUp
                 ? "Already have an account? Login"

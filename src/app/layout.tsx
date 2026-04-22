@@ -34,32 +34,11 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-screen antialiased`}
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  const savedTheme = localStorage.getItem('theme') || 'xp';
-                  
-                  // Create and load the theme CSS
-                  const link = document.createElement('link');
-                  link.id = 'theme-css';
-                  link.rel = 'stylesheet';
-                  link.href = '/styles/' + savedTheme + '.css';
-                  document.head.appendChild(link);
-                } catch (e) {
-                  console.error('Theme initialization error:', e);
-                }
-              })();
-            `,
-          }}
-        />
-      </head>
+        <head />
       <body className="h-screen w-full flex flex-col overflow-hidden bg-background text-foreground font-sans selection:bg-primary/30">
         <Providers>
           <Navbar />
-          <main className="flex-1 flex overflow-hidden relative">
+          <main className="flex-1 flex overflow-hidden relative animate-fade-slide">
             {children}
           </main>
         </Providers>
